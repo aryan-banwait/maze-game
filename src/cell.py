@@ -15,7 +15,7 @@ class Line():
 
     def draw_line(self, fillcolor="white"):
         pygame.draw.line(
-            self.screen, fillcolor, (self.start_point.x, self.start_point.y), (self.end_point.x, self.end_point.y), 3
+            self.screen, fillcolor, (self.start_point.x, self.start_point.y), (self.end_point.x, self.end_point.y), 2
             )
         
 
@@ -30,6 +30,7 @@ class Cell():
         self.x2 = None
         self.y1 = None
         self.y2 = None
+        self.visited = False
 
 
     def draw(self, x1, y1, x2, y2):
