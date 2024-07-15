@@ -19,6 +19,7 @@ class Line():
             )
         
 
+
 class Cell():
     def __init__(self, screen=None):
         self.screen = screen
@@ -55,3 +56,17 @@ class Cell():
             Line(Point(self.x2, self.y1), Point(self.x2, self.y2), self.screen).draw_line()
         else:
             Line(Point(self.x2, self.y1), Point(self.x2, self.y2), self.screen).draw_line("black")
+    
+
+    def draw_move(self, other_cell, undo=False):
+        x_center = (self.x1 + self.x2) // 2
+        y_center = (self.y1 + self.y2) // 2
+
+        x_center2 = (other_cell.x1 + other_cell.x2) // 2
+        y_center2 = (other_cell.y1 + other_cell.y2) // 2
+
+        fill_color = "red"
+        if undo:
+            fill_color = "black"
+
+        Line(Point(x_center, y_center), Point(x_center2, y_center2), self.screen).draw_line(fill_color)

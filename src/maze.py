@@ -1,4 +1,4 @@
-import random
+import random, time, pygame
 from cell import Cell
 
 class Maze():
@@ -94,5 +94,51 @@ class Maze():
         for i in range(self.cols):
             for j in range(self.rows):
                 self.cells[i][j].visited = False
+
+    def animate(self):
+        if self.screen is None:
+            return
+        pygame.display.flip()
+        time.sleep(0.01)
+
+    
+    def solve(self):
+        return self.solve_r(0, 0)
+    
+
+    def solve_r(self, i ,j):
+        self.animate()
+        self.cells[i][j].visited = True
+
+        if i == self.cols - 1 and j == self.rows - 1:
+            return True
+        
+        possible_directions = []
+        if i > 0 and not self.cells[i][j].has_left_wall and not self.cells[i - 1][j].visited:
+            possible_directions.append((i - 1, j))
+
+        if i < self.cols - 1 and not self.cells[i][j].has_right_wall and not self.cells[i + 1][j].visited:
+            possible_directions.append((i + 1, j))
+
+        if j > 0 and not self.cells[i][j].has_top_wall and not self.cells[i][j - 1].visited:
+            possible_directions.append((i, j - 1))
+        
+        if j < self.rows - 1 and not self.cells[i][j].has_bottom_wall and not self.cells[i][j + 1].visited:
+            possible_directions.append((i, j + 1))
+
+        
+        if len(possible_directions) == 0:
+            return False
+        
+        for cell in possible_directions:
+            self.cells[i][j].draw_move(self.cells[cell[0]][cell[1]])
+            result = self.solve_r(cell[0], cell[1])
+            if result:
+                return True
+            else:
+                self.cells[i][j].draw_move(self.cells[cell[0]][cell[1]], True)
+        
+        return False
+
 
     
