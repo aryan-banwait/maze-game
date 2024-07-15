@@ -1,4 +1,4 @@
-import os, pygame, sys
+import pygame, os, sys
 from player import Player
 
 os.environ['SDL_AUDIODRIVER'] = 'dummy'
@@ -9,7 +9,7 @@ screen_size = (width, height) = (1280, 720)
 screen = pygame.display.set_mode(screen_size)
 clock = pygame.time.Clock()
 bg_color = "black"
-hero = Player("media/hero.png", 500, 500) 
+hero = Player("media/hero.png", 0, 0) 
 while running:
     #TERMINATION LOGIC
     for event in pygame.event.get():
@@ -19,9 +19,9 @@ while running:
     #GAME LOGIC PRE INPUT
     screen.fill(bg_color)
     keys = pygame.key.get_pressed()
-    screen.blit(hero.image, hero.rect.topleft)
 
-    #EXTRA GAME LOGIC
+    #PLAYER LOGIC
+    screen.blit(hero.image, hero.rect.topleft)
     hero.move(keys)
     hero.out_of_screen()
 

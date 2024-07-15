@@ -1,4 +1,4 @@
-import os, pygame
+import pygame
 
 def play_game():
     pygame.init()

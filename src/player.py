@@ -30,7 +30,5 @@ class Player(pygame.sprite.Sprite):
             self.rect.x = 0
    
     
-    def collision(self, enemy):
-        return
     
     
