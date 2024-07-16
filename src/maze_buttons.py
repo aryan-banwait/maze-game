@@ -24,7 +24,7 @@ user_requests_new_game = False
 bg_color = "black"
 game_maze = Maze(screen, 25, 15, 50, 50, 50)
 maze_exit = game_maze.cells[game_maze.cols - 1][game_maze.rows - 1]
-player = Player("media/pac-ghost.png", 60, 60)
+player = Player("media/pac-ghost.png", 60, 60, 30)
 
 
 def solve_maze():
@@ -102,9 +102,9 @@ while game_running:
     screen.fill(bg_color)
     game_maze.draw()
 
-    solve_game_maze_btn.draw(screen)
-    play_again_btn.draw(screen)
-    exit_game_btn.draw(screen)
+    solve_game_maze_btn.draw(screen, "white")
+    play_again_btn.draw(screen, "white")
+    exit_game_btn.draw(screen, "white")
 
     solve_game_maze_btn.check_click(solve_maze)
     play_again_btn.check_click(play_again)
@@ -128,9 +128,9 @@ while game_running:
 
 
 screen.fill(bg_color)
-solve_game_maze_btn.draw(screen)
-play_again_btn.draw(screen)
-exit_game_btn.draw(screen)
+solve_game_maze_btn.draw(screen, "white")
+play_again_btn.draw(screen, "white")
+exit_game_btn.draw(screen, "white")
 
 game_maze.draw()
 if requested_to_solve_maze:
@@ -157,15 +157,15 @@ while after_game:
         
     screen.fill(bg_color)
     game_maze.draw()
-    solve_game_maze_btn.draw(screen)
-    play_again_btn.draw(screen)
-    exit_game_btn.draw(screen)
+    solve_game_maze_btn.draw(screen, "white")
+    play_again_btn.draw(screen, "white")
+    exit_game_btn.draw(screen, "white")
 
     play_again_btn.check_click(play_again)
     exit_game_btn.check_click(exit_game)
 
     if user_reached_end:
-        text_display(screen, (info.current_w // 2) - 50, 10, f"time: {final_time}s")
+        text_display(screen, (info.current_w // 2) - 50, 10, f"time: {final_time}s", 36)
         screen.blit(player.image, player.rect.topleft)
 
     

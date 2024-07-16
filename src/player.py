@@ -1,10 +1,10 @@
 import pygame
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, image_path, x, y):
+    def __init__(self, image_path, x, y, size):
         super().__init__()
         self.image = pygame.image.load(image_path).convert_alpha()
-        self.image = pygame.transform.scale(self.image, (30, 30))
+        self.image = pygame.transform.scale(self.image, (size, size))
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
 

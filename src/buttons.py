@@ -12,14 +12,14 @@ class Button:
         
 
 
-    def draw(self, screen):
+    def draw(self, screen, text_color):
         mouse_pos = pygame.mouse.get_pos()
         if self.rect.collidepoint(mouse_pos):
-            pygame.draw.rect(screen, self.hover_color, self.rect)
+            pygame.draw.rect(screen, self.hover_color, self.rect, border_radius=30)
         else:
-            pygame.draw.rect(screen, self.color, self.rect)
+            pygame.draw.rect(screen, self.color, self.rect, border_radius=30)
         
-        text_surface = pygame.font.Font(self.font_type, self.font_size).render(self.text, True, "white")
+        text_surface = pygame.font.Font(self.font_type, self.font_size).render(self.text, True, text_color)
         text_rect = text_surface.get_rect(center=self.rect.center)
         screen.blit(text_surface, text_rect)
 
@@ -51,8 +51,8 @@ def timer_display(screen, x, y, start_time, started_solving, reached_end):
         return solved_time
     
 
-def text_display(screen, x, y, text):
-    text_surface = pygame.font.Font(None, 36).render(text, True, "white")
+def text_display(screen, x, y, text, font_size):
+    text_surface = pygame.font.Font(None, font_size).render(text, True, "white")
     screen.blit(text_surface, (x, y))
     return
     
