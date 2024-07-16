@@ -2,7 +2,7 @@ import random, time, pygame
 from cell import Cell
 
 class Maze():
-    def __init__(self, screen, cols, rows, x1, y1, seed=None):
+    def __init__(self, screen, cols, rows, x1, y1, cell_size, seed=None):
         self.screen = screen
         self.x1 = x1
         self.y1 = y1
@@ -11,7 +11,7 @@ class Maze():
         self.rows = rows
         self.cols = cols
         self.seed = seed
-        self.cell_size = 50
+        self.cell_size = cell_size
         self.cells = []
 
         if self.seed:
